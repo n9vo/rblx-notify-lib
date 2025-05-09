@@ -77,7 +77,7 @@ local function CreateNotificationFrame()
     return Cloned
 end
 
-function NotificationModule:Notify(message, duration, notificationType)
+function NotificationModule:Notify(notificationType, message, duration)
     duration = duration or 3
     notificationType = notificationType or "Info"
 
