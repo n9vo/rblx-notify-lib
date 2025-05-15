@@ -9,6 +9,7 @@ NotificationUI.Name = "NotificationUI"
 NotificationUI.ResetOnSpawn = false
 NotificationUI.IgnoreGuiInset = true
 NotificationUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+NotificationUI.DisplayOrder = 1000
 
 local IconAssets = {
     Error = "rbxassetid://122543689043469",
@@ -27,8 +28,8 @@ NotificationTemplate.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 NotificationTemplate.Size = UDim2.new(0, 300, 0, 40)
 NotificationTemplate.BorderSizePixel = 0
 NotificationTemplate.BackgroundTransparency = 1
-NotificationTemplate.AnchorPoint = Vector2.new(0.5, 1)
-NotificationTemplate.Position = UDim2.new(0.5, 0, 0.9, -50)
+NotificationTemplate.AnchorPoint = Vector2.new(0.5, 0)
+NotificationTemplate.Position    = UDim2.new(0.5, 0, 0, 20)  -- 20px down from top
 NotificationTemplate.AutomaticSize = Enum.AutomaticSize.Y
 NotificationTemplate.ClipsDescendants = true
 NotificationTemplate.Visible = false
@@ -93,7 +94,7 @@ function NotificationModule:Notify(notificationType, message, duration)
 
     for index, notif in ipairs(ActiveNotifications) do
         TweenService:Create(notif, TweenInfo.new(0.35, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {
-            Position = UDim2.new(0.5, 0, 0.9, -50 - ((#ActiveNotifications - index) * 55))
+            Position = UDim2.new(0.5, 0, 0, 20 + ((#ActiveNotifications - index) * 55))
         }):Play()
     end
 
