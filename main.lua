@@ -89,10 +89,10 @@ local function cloneNotification()
     return c
 end
 
-function NotificationModule:Notify(type, msg, duration)
+function NotificationModule:Notify(notitype, msg, duration)
     duration = duration or 3
-    local asset = IconAssets[type] or IconAssets.Info
-    local color = IconColors[type] or IconColors.Info
+    local asset = IconAssets[notitype] or IconAssets.Info
+    local color = IconColors[notitype] or IconColors.Info
 
     local notif = cloneNotification()
     notif.TextLabel.Text      = msg
